@@ -12,14 +12,14 @@ const tempBtn = document.getElementById("tempBtn");
 const submitBtn = document.getElementById('btn');
 const city = document.getElementById("searchCity");
 const displayWeather = document.getElementById("weatherInfo");
+//async function 
 async function submitAPI() {
     displayWeather.innerHTML = '';
     displayWeather.style.display = "flex";
     tempBtn.innerHTML = "Celcius";
-
+    //await promise
     const cityData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=`+ city.value +`&APPID=c0777fc93b16abc278dfa0c88810020a`, {mode: 'cors'})
     const cityInfo = await cityData.json();
-    console.log(cityInfo);
 
     const name = document.createElement("div");
     name.innerHTML = cityInfo.name;
@@ -32,7 +32,7 @@ async function submitAPI() {
     
     const weatherIcon = document.createElement("img");
     const weatherPic = assignWeatherPic(cityInfo.weather[0].description);
-    console.log(weatherPic);
+
     weatherIcon.setAttribute("src", weatherPic);
     displayWeather.appendChild(weatherIcon);
 
